@@ -1,6 +1,20 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 const NotFound = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      router.push("/");
+    }, 3000);
+    return () => {
+      console.log("clearing timemout");
+      clearTimeout(timerId);
+    };
+  }, []);
+
   return (
     <div className="not-found">
       <h1>Ooooops...</h1>
